@@ -18,28 +18,8 @@
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0B121E; --grid:rgba(226,234,246,.035);
-    --sheet:#121B2A; --sheet-2:#182335;
-    --ink:#E8EEF7; --ink-2:#B5C1D3; --ink-3:#8B99AE;
-    --line:#2A374D; --line-2:#1F2B3F;
-    --accent:#3987E5; --accent-ink:#8DBBF2; --accent-soft:#15294A; --track:#1A2C47;
-    --btn-bg:#3987E5; --btn-fg:#08111F;
-    --good:#0CA30C; --crit:#D03B3B; --crit-ink:#E66767; --on-status:#FFFFFF;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0B121E; --grid:rgba(226,234,246,.035);
-  --sheet:#121B2A; --sheet-2:#182335;
-  --ink:#E8EEF7; --ink-2:#B5C1D3; --ink-3:#8B99AE;
-  --line:#2A374D; --line-2:#1F2B3F;
-  --accent:#3987E5; --accent-ink:#8DBBF2; --accent-soft:#15294A; --track:#1A2C47;
-  --btn-bg:#3987E5; --btn-fg:#08111F;
-  --good:#0CA30C; --crit:#D03B3B; --crit-ink:#E66767; --on-status:#FFFFFF;
-  color-scheme:dark;
-}
+/* Single light look by the owner's choice: no dark palette, so the page stays light in every app theme. */
+:root{color-scheme:light}
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -373,7 +353,7 @@ td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:t
             <tbody>
               <tr><td>Coding</td><td>About 150 medium problems by pattern, timed. Hard ones mainly for Google, Rubrik, Databricks, Media.net</td><td>30% falling to 15%</td></tr>
               <tr><td>System design</td><td>12 classic designs and 4 AI designs, plus the building blocks</td><td>25%</td></tr>
-              <tr><td>LLD and concurrency</td><td>8 to 10 problems as real C++ code</td><td>10%</td></tr>
+              <tr><td>LLD and concurrency</td><td>SOLID and three patterns, then 11 problems as real C++ code</td><td>10%</td></tr>
               <tr><td>Systems depth</td><td>OS, networking, storage engines, language internals</td><td>10%</td></tr>
               <tr><td>AI</td><td>Applied LLM systems and one project</td><td>20%</td></tr>
               <tr><td>Stories</td><td>8 STAR stories, 2 project deep dives, gap and salary answers</td><td>5% plus mocks</td></tr>
@@ -573,16 +553,18 @@ td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:t
       ["w0-apply", "hunt", "Apply to 10 wave 1 companies"],
       ["w0-triage", "hunt", "Go through the Companies tab and mark the ones you will not pursue"],
       ["w0-pitch", "story", "Write your 60-second introduction, your answer for the gap and your salary answer"],
+      ["w0-warmup", "code", "Warm-up: 8 easy problems in one sitting (LC 217, 242, 167, 704, 21, 104, 226, 70)"],
       ["w0-base-code", "code", "Baseline: 2 medium problems in 45 minutes, timed. Note what happened"],
       ["w0-base-design", "design", "Baseline: design a URL shortener alone for 45 minutes and record it"],
       ["w0-templates", "code", "Set up a practice repo with your templates: heap, trie, union-find, graph traversals"]
     ] },
     { s: "2026-11-30", e: "2026-12-06", title: "Rebuild the base: arrays to trees", tasks: [
-      ["w1-code-a", "code", "Arrays and hashing, two pointers, sliding window: 10 problems"],
+      ["w1-code-a", "code", "Arrays and hashing, prefix sums, two pointers, sliding window: 10 problems (include LC 560 and 424)"],
       ["w1-code-b", "code", "Stack, binary search, linked list: 10 problems"],
       ["w1-code-c", "code", "Trees and heaps: 10 problems"],
-      ["w1-design-a", "design", "Building blocks: estimation, load balancing, caching, SQL vs NoSQL, indexes"],
+      ["w1-design-a", "design", "Building blocks: estimation, load balancing, caching, CDN, SQL vs NoSQL, indexes"],
       ["w1-design-b", "design", "Building blocks: replication, sharding, consistent hashing, queues, consistency levels"],
+      ["w1-oop", "lld", "SOLID and three patterns in C++ (Strategy, Factory, Observer), one small example each"],
       ["w1-lld", "lld", "LRU cache, thread-safe, written and tested in 60 minutes"],
       ["w1-sys", "sys", "C++ internals: work through the C++ list in the Questions tab"],
       ["w1-ai-a", "ai", `Watch Karpathy's "Intro to Large Language Models"; write half a page on tokens, context window, embeddings and sampling`],
@@ -591,12 +573,13 @@ td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:t
       ["w1-recruiter", "hunt", "Take every recruiter call; note the pay range each one quotes"]
     ] },
     { s: "2026-12-07", e: "2026-12-13", title: "Rebuild the base: graphs and DP", tasks: [
-      ["w2-code-a", "code", "Graphs: BFS, DFS, topological sort, union-find, Dijkstra: 12 problems"],
+      ["w2-code-a", "code", "Graphs: BFS including multi-source (LC 994), DFS, topological sort, union-find, Dijkstra: 12 problems"],
       ["w2-code-b", "code", "Backtracking and tries: 6 problems"],
       ["w2-code-c", "code", "Dynamic programming and greedy: 12 problems"],
       ["w2-design-a", "design", "URL shortener and rate limiter, 45 minutes each"],
       ["w2-design-b", "design", "Notification system and chat, 45 minutes each"],
       ["w2-lld", "lld", "Parking lot; key-value store with TTL, thread-safe"],
+      ["w2-lld-b", "lld", "Machine coding: movie ticket booking (BookMyShow style) with seat locking, running code in 90 minutes"],
       ["w2-sys", "sys", "OS refresher: processes and threads, virtual memory, scheduling, epoll"],
       ["w2-ai", "ai", "Inference server v1 in C++ on llama.cpp: an HTTP API with streaming, timeouts and cancellation"],
       ["w2-mock", "story", "First peer mock interview (coding)"],
@@ -627,7 +610,7 @@ td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:t
       ["w4-ai-a", "ai", "Evals: 50-question test set, retrieval recall, LLM-as-judge with spot checks, a pass or fail gate"],
       ["w4-ai-b", "ai", "Add request batching and a response cache; measure time to first token, tokens per second, p95 latency and recall"],
       ["w4-ai-c", "ai", "Publish the project on GitHub with a README, a diagram and your numbers by Sun 27 Dec"],
-      ["w4-mocks", "story", "Rehearse the 8 stories aloud; 2 mocks"],
+      ["w4-mocks", "story", "Rehearse the 8 stories aloud; 2 mocks, one of them LLD or machine coding"],
       ["w4-cp-code", "check", "Readiness check: 2 mediums in 45 minutes, 7 times out of 10"],
       ["w4-cp-design", "check", "Readiness check: a full 45-minute design on your own"],
       ["w4-cp-int", "check", "Readiness check: 6 real interviews done"]
@@ -946,18 +929,19 @@ td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:t
         ] }
       ] },
     { k: "code", label: "Coding", byName: true,
-      note: "60 anchor problems on LeetCode; the last group was reported in recent interviews. Your full practice set is the NeetCode 150 list. Tick a problem when you can solve it cold in 25 minutes.",
+      note: "72 problems on LeetCode: 8 easy warm-ups, then anchors by pattern. The last group was reported in recent interviews. Your full practice set is the NeetCode 150 list. Tick a problem when you can solve it cold in 25 minutes.",
       groups: [
-        { t: "Arrays and hashing", q: ["Two Sum", "Group Anagrams", "Top K Frequent Elements", "Product of Array Except Self", "Longest Consecutive Sequence"] },
+        { t: "Warm-ups (easy)", q: ["Contains Duplicate", "Valid Anagram", "Two Sum II - Input Array Is Sorted", "Binary Search", "Merge Two Sorted Lists", "Maximum Depth of Binary Tree", "Invert Binary Tree", "Climbing Stairs"] },
+        { t: "Arrays and hashing", q: ["Two Sum", "Group Anagrams", "Top K Frequent Elements", "Product of Array Except Self", "Longest Consecutive Sequence", "Subarray Sum Equals K"] },
         { t: "Two pointers", q: ["3Sum", "Container With Most Water", "Trapping Rain Water"] },
-        { t: "Sliding window", q: ["Longest Substring Without Repeating Characters", "Minimum Window Substring", "Sliding Window Maximum"] },
+        { t: "Sliding window", q: ["Longest Substring Without Repeating Characters", "Minimum Window Substring", "Sliding Window Maximum", "Longest Repeating Character Replacement"] },
         { t: "Stack", q: ["Valid Parentheses", "Daily Temperatures", "Largest Rectangle in Histogram"] },
         { t: "Binary search", q: ["Search in Rotated Sorted Array", "Koko Eating Bananas", "Median of Two Sorted Arrays"] },
         { t: "Linked list", q: ["Reverse Linked List", "Merge k Sorted Lists", "LRU Cache", "Reorder List"] },
         { t: "Trees", q: ["Binary Tree Level Order Traversal", "Lowest Common Ancestor of a Binary Tree", "Validate Binary Search Tree", "Serialize and Deserialize Binary Tree", "Binary Tree Maximum Path Sum"] },
         { t: "Heaps", q: ["Kth Largest Element in an Array", "Find Median from Data Stream", "Task Scheduler"] },
         { t: "Intervals", q: ["Merge Intervals", "Insert Interval", "Meeting Rooms II"] },
-        { t: "Graphs", q: ["Number of Islands", "Course Schedule", "Clone Graph", "Word Ladder", "Network Delay Time", "Alien Dictionary"] },
+        { t: "Graphs", q: ["Number of Islands", "Course Schedule", "Clone Graph", "Word Ladder", "Network Delay Time", "Alien Dictionary", "Rotting Oranges", "Max Area of Island"] },
         { t: "Backtracking", q: ["Subsets", "Permutations", "Combination Sum", "Word Search", "N-Queens"] },
         { t: "Tries", q: ["Implement Trie (Prefix Tree)", "Word Search II"] },
         { t: "Dynamic programming", q: ["Coin Change", "House Robber", "Longest Increasing Subsequence", "Word Break", "Longest Common Subsequence", "Edit Distance", "Partition Equal Subset Sum"] },
@@ -967,8 +951,14 @@ td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line-2);vertical-align:t
     { k: "lld", label: "LLD",
       note: "Write each one as real, compiling code with tests in 60 to 90 minutes. Explain your classes and your locking out loud as you go.",
       groups: [
-        { t: "Low-level design", q: ["LRU cache, thread-safe", "Rate limiter library (token bucket)", "In-memory key-value store with TTL", "Parking lot", "Expense sharing (Splitwise style)", "Elevator controller"] },
-        { t: "Concurrency", q: ["Worker pool with graceful shutdown", "Bounded blocking queue", "In-process pub-sub broker", "Connection pool with timeouts"] }
+        { t: "Low-level design", q: ["LRU cache, thread-safe", "Rate limiter library (token bucket)", "In-memory key-value store with TTL", "Parking lot", "Expense sharing (Splitwise style)", "Elevator controller", "Movie ticket booking (BookMyShow style) with seat locking"] },
+        { t: "Concurrency", q: ["Worker pool with graceful shutdown", "Bounded blocking queue", "In-process pub-sub broker", "Connection pool with timeouts"] },
+        { t: "OOP and patterns", q: [
+          "SOLID: explain each principle with an example from your own code.",
+          "Strategy pattern: implement it in C++. How does it differ from State?",
+          "Factory method vs abstract factory: when is each worth the extra classes?",
+          "Observer pattern: implement it, then name its pitfalls (lifetimes, re-entrancy, ordering)."
+        ] }
       ] },
     { k: "go", label: "Go (optional)", last: true,
       note: "Optional. You interview in C++, so open this list only for a team that works in Go. These do not count towards your total.",
